@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Discord Tools Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet" />
+<link rel="icon" href="https://home.hamusata.f5.si/icon.svg" type="image/svg+xml" />
+<style>
+  body, html {
+    margin:0; height:100%;
+    font-family:'Potta One', cursive;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    display:flex; justify-content:center; align-items:center;
+    text-align:center; padding:2vw;
+  }
+  .container {
+    background: linear-gradient(145deg,#f0f4ff,#d9e4ff);
+    padding:2rem 2.5rem; border-radius:1.25rem;
+    width:100%; max-width:480px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+    display:flex; flex-direction:column; gap:1rem; align-items:center;
+  }
+  h1 { margin:0 0 1rem; font-size:clamp(1.75rem,4vw,2.25rem); color:#0a1f44; }
+  p { font-size:clamp(1rem,2.5vw,1.1rem); color:#002166; }
+  button {
+    padding:1rem 2rem; font-size:1.1rem;
+    border:none; border-radius:0.75rem;
+    background:linear-gradient(90deg,#00c6ff,#0072ff);
+    color:white; cursor:pointer; font-weight:600; transition:0.3s;
+    width:100%;
+    max-width:300px;
+  }
+  button:hover { background:linear-gradient(90deg,#0072ff,#004aad); }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Discord Tools</h1>
+    <p>このページからDiscord関連のツールページに移動できます。</p>
+    <button onclick="location.href='timestamp/index.html'">DiscordメッセージID 計算ページ</button>
+    <button onclick="location.href='dashboard/index.html'">UNIX時間 → Discordタイムスタンプページ</button>
+    <button onclick="location.href='conversion/index.html'">UNIX時間表示対応版 DiscordメッセージID 計算ページ</button>
+    <button onclick="location.href='message-id/index.html'">メッセージIDの解析 (AICode)</button>
+  </div>
+</body>
+</html>
