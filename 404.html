@@ -3,111 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>404 エラーコード - Error</title>
-  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <title>404 Error / 404 エラー</title>
+  <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    :root {
-      --md-sys-color-background: #121212;
-      --md-sys-color-on-background: #e0e0e0;
-      --md-sys-color-surface: #1e1e1e;
-      --md-sys-color-on-surface: #e0e0e0;
-      --md-sys-color-surface-container: #1c1c1c;
-      --md-sys-color-surface-container-high: #2a2a2a;
-      --md-sys-color-primary: #6750a4;
-      --md-sys-color-on-primary: #ffffff;
-      --md-sys-color-primary-container: #4f378b;
-      --md-sys-color-on-primary-container: #eaddff;
-    }
-
-    @media (prefers-color-scheme: light) {
-      :root {
-        --md-sys-color-background: #f7f3e9;
-        --md-sys-color-on-background: #3b2f2f;
-        --md-sys-color-surface: #fffdf7;
-        --md-sys-color-on-surface: #3b2f2f;
-        --md-sys-color-surface-container: #f2e8d5;
-        --md-sys-color-surface-container-high: #e6dcc2;
-        --md-sys-color-primary: #6750a4;
-        --md-sys-color-on-primary: #ffffff;
-        --md-sys-color-primary-container: #eaddff;
-        --md-sys-color-on-primary-container: #1e1b1c;
-      }
-    }
-
-    * {
-      box-sizing: border-box;
+    body, html {
       margin: 0;
-      padding: 0;
-      font-family: 'Potta One', sans-serif;
-    }
-
-    body {
-      background-color: var(--md-sys-color-background);
-      color: var(--md-sys-color-on-background);
+      height: 100%;
+      font-family: 'Potta One', cursive;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
-      padding: 2rem;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-      transition: background-color 0.3s, color 0.3s;
-      background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 70%);
+      padding: 2vw;
+    }
+
+    .container {
+      background: linear-gradient(145deg, #f0f4ff, #d9e4ff);
+      padding: 2rem 2.5rem;
+      border-radius: 1.25rem;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
     }
 
     h1 {
-      font-size: 5rem;
-      margin-bottom: 0.3em;
-      color: var(--md-sys-color-on-surface);
-      letter-spacing: 0.15em;
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 3rem);
+      color: #0a1f44;
     }
 
     p {
-      font-size: 1.2rem;
-      margin: 0.3em 0;
-      color: var(--md-sys-color-on-surface-variant, #aaa);
+      margin: 0;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      color: #002166;
     }
 
     .subtext {
-      font-size: 1rem;
-      color: var(--md-sys-color-on-surface-variant, #888);
-      margin-top: 0.5em;
+      color: #31508d;
+      font-size: clamp(0.9rem, 2vw, 1rem);
     }
 
     a.back {
-      margin-top: 2rem;
-      padding: 0.75em 2em;
-      background-color: var(--md-sys-color-primary-container);
-      color: var(--md-sys-color-on-primary-container);
+      display: inline-block;
       text-decoration: none;
-      border-radius: 12px;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
     }
 
     a.back:hover {
-      background-color: var(--md-sys-color-primary);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.8);
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 3.5rem;
-      }
-      p {
-        font-size: 1rem;
-      }
+      background: linear-gradient(90deg, #0072ff, #004aad);
     }
   </style>
 </head>
 <body>
-  <h1>404 - Error</h1>
-  <p>エラーが発生しました: 見つかりません</p>
-  <p class="subtext">Sorry, Not Found.</p>
-  <a id="backLink" class="back" href="/">トップページへ戻る</a>
+  <div class="container">
+    <h1>404 Error / 404 エラー</h1>
+    <p>Page not found / ページが見つかりません</p>
+    <p class="subtext">Sorry, Not Found. / 申し訳ありません、見つかりません。</p>
+    <a id="backLink" class="back" href="/">トップページへ戻る</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (location.hostname === 'hamuzon.github.io') {
+        document.getElementById('backLink').href = 'https://hamuzon.github.io/discord-tools';
+      }
+    });
+  </script>
 </body>
 </html>
