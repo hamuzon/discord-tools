@@ -205,7 +205,7 @@ function updateOutputs(ts) {
 
 function formatRelativeSimple(tsSeconds) {
     const now = Math.floor(Date.now() / 1000);
-    let diff = tsSeconds - now;
+    const diff = tsSeconds - now;
     const abs = Math.abs(diff);
     if (abs < 60) {
         return diff < 0 ? `${Math.round(abs)}秒前` : `${Math.round(abs)}秒後`;
@@ -216,7 +216,18 @@ function formatRelativeSimple(tsSeconds) {
     if (abs < 86400) {
         return diff < 0 ? `${Math.round(abs / 3600)}時間前` : `${Math.round(abs / 3600)}時間後`;
     }
-    return diff < 0 ? `${Math.round(abs / 86400)}日前` : `${Math.round(abs / 86400)}日後`;
+    if (abs < 2592000) {
+        // less than 30 days -> days
+        return diff < 0 ? `${Math.round(abs / 86400)}日前` : `${Math.round(abs / 86400)}日後`;
+    }
+    if (abs < 31536000) {
+        // less than a year -> months
+        const months = Math.round(abs / 2592000);
+        return diff < 0 ? `${months}か月前` : `${months}か月後`;
+    }
+    // years
+    const years = Math.round(abs / 31536000);
+    return diff < 0 ? `${years}年前` : `${years}年後`;
 }
 
 function generateDiscordTimestamps(ts) {
