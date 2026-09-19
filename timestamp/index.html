@@ -97,13 +97,14 @@
   }
 
   .page-header {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 12px;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
   }
 
   .home-button {
+    align-self: flex-start;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -228,12 +229,7 @@
 
   @media (max-width: 600px) {
     .page-header {
-      grid-template-columns: 1fr;
       gap: 10px;
-    }
-
-    .home-button {
-      justify-self: start;
     }
 
     .controls {
