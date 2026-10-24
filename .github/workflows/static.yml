@@ -1,3 +1,4 @@
+
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 
@@ -40,6 +41,28 @@ jobs:
           sudo chown -R $USER:$USER ./_site
           # 全てのHTMLファイルの<head>直後に挿入
           cd ./_site && find . -maxdepth 1 -name "*.html" -not -name "google*.html" -exec sed -i '/<head>/a \  <script>if(window.location.hostname.endsWith(".")){window.location.replace(window.location.href.replace(window.location.hostname,window.location.hostname.slice(0,-1)));}</script>' {} +
+      - name: Inject Google Analytics
+        run: |
+          # 全てのHTMLファイルの<head>直後にGoogle Analyticsを挿入
+          cd ./_site && find . -maxdepth 1 -type f -name "*.html" ! -name "google*.html" -exec sh -c '
+            for file do
+              if grep -q "G-F8HVYVW05H" "$file"; then
+                echo "Google Analytics already exists: $file"
+                continue
+              fi
+
+              sed -i "/<head>/a\\
+          <script async src=\"https://www.googletagmanager.com/gtag/js?id=G-F8HVYVW05H\"></script>\\
+          <script>\\
+          window.dataLayer = window.dataLayer || [];\\
+          function gtag(){dataLayer.push(arguments);}\\
+          gtag(\"js\", new Date());\\
+          gtag(\"config\", \"G-F8HVYVW05H\");\\
+          </script>" "$file"
+
+              echo "Updated: $file"
+            done
+          ' sh {} +
       - name: Remove sensitive files from deployment artifact
         run: |
           # デプロイ対象から削除
@@ -58,4 +81,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-        
